@@ -35,7 +35,7 @@ Below is how to call the compiled file. It takes two parameters:
 - A key which will be used to encrypt/decrypt the text
 
 ```bash
-$>  ./build/cipher <encrpyt/decrypt> <key>
+$>  ./build/cipher <encrypt/decrypt> <key>
 ```
 
 The text that will be encrypted/decrypted is read via whatever is piped in, as shown in the examples below.
