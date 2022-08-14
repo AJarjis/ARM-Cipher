@@ -1,4 +1,4 @@
-@ cw2.s
+@ cipher.s
 
 @ A simple cipher which encypts/decrypts a message with a given key.
 

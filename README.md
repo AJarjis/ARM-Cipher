@@ -1,16 +1,57 @@
 # ARM Cipher
 
-## What it does?
-Encipher and deciphers a piece of text using a caesar cipher. Built completely using ARM assemblya and allows you to encipher/decipher any input with a given private key.
+Enciphers and deciphers any text using a [Caesar Cipher](https://en.wikipedia.org/wiki/Caesar_cipher).
+Built completely using ARM assembly code.
 
-## So does it work?
-Yes. Example of use: 
+## Required Tools
+
+- [docker](https://www.docker.com/products/docker-desktop/)
+
+## Initial Setup
+
+To be able to compile the code, use the docker container provided to run the code.
+
+### Build Docker Image
+
+This image has been setup to run ARMv6 32-bit and will also compile the assembly code.
+
+```bash
+make build
 ```
-cat textfile.txt | ./cw2 0 lock. 
+
+### Run Docker Container
+
+```bash
+make run
 ```
 
-Use 0 as a parameter to encrypt the input and 1 to decrypt followed by the private key (e.g. "lock"). This will encrypt/decrypt whetever is piped through.
+After both the build and run commands have been run you can run the commands below within the container.
 
-## Why was it made?
-Primarily made as a way of learning about operating systems and assembly language. 
+## Usage
 
+Below is how to call the compiled file. It takes two parameters:
+
+- An encrypt (0) or decrypt (1) boolean variable
+- A key which will be used to encrypt/decrypt the text
+
+```bash
+$>  ./build/cipher <encrpyt/decrypt> <key>
+```
+
+The text that will be encrypted/decrypted is read via whatever is piped in, as shown in the examples below.
+
+### Encrypting Data Example
+
+```bash
+$> echo 'hello' | ./build/cipher 0 lock || echo -e '\n'
+$> vpiac
+```
+
+Use the same private key to encrypt/decrypt your message.
+
+### Decrypting Data Example
+
+```bash
+$> echo 'vpiac' | ./build/cipher 1 lock || echo -e '\n'
+$> hello
+```
